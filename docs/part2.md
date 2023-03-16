@@ -176,8 +176,8 @@ Add key/value inputs for the cluster module
 
 ```
 plan     = "c3.medium.x86"
-location = "the-org-name-you-created"
-metro    = "someone@companyx.com"
+location = "da"
+os       = "ubuntu_22_04"
 ```
 
 ### 6. Environment variables
