@@ -19,11 +19,11 @@ API keys in Metal can be tied to your user or to a single project. For this work
 
 To create a new user API key, access to your user Profile in the Equinix Metal console, click on your user icon, and click My Profile.
 
-<!-- TODO - ADD MY PROFILE SCREENSHOT -->
+![Equinix Console profile section screenshot](images/profile-screenshot.png)
 
 Then select the `API Keys` tab and click on `+ Add New Key`. Create a new key with `Read/Write` permissions.
 
-<!-- TODO - ADD API KEYS SCREENSHOT -->
+![Equinix Console API keys section screenshot](images/profile-api-keys-screenshot.png)
 
 ### 3. Install Terraform
 
