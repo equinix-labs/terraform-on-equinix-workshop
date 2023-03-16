@@ -5,11 +5,12 @@ Thank you for participating in the workshop! Let's recap some of the key takeway
 
 * ...
 * ...
-* ...
 
 ## References
 
 ## Next Steps
+
+* 
 
 ## Resources
 
