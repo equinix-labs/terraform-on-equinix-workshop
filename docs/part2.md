@@ -10,7 +10,7 @@ Code in the Terraform language is stored in plain text files with the .tf file e
 * main.tf Declare all resource and datasource definitions
 * outputs.tf Declare all outputs in this file. Output values are similar to return values in programming languages
 * variables.tf Declare all input variables in this file. Input variables let you customize aspects of Terraform modules without altering the module's own source code
-* terraform.tfvars Assign or override values of the variables defined in the variables.tf file
+* terraform.tfvars Assign/override values of the variables defined in the variables.tf file
 
 ## Steps
 
@@ -143,13 +143,13 @@ variable "plan" {
 
 variable "location" {
   type        = string
-  description = "device type/size"
+  description = "Equinix metro code"
   default     = "SV"
 }
 
 variable "os" {
   type        = string
-  description = "device type/size"
+  description = "Operating system required"
   default     = "ubuntu_20_04"
 }
 ```
@@ -170,13 +170,17 @@ resource "equinix_metal_device" "device" {
 
 ### 6. Tfvars files
 
+Default variable values can be overridden on the command line. In fact, a default value is not even required, Terraform will prompt for an input for the variables with no default value.
+
+To set lots of variables, it is more convenient to specify their values in a variable definitions file `.tfvars`.
+
 Create a `terraform.tfvars` file
 
-Add key/value inputs for the cluster module
+Add key/value inputs for the
 
 ```
 plan     = "c3.medium.x86"
-location = "da"
+location = "fr"
 os       = "ubuntu_22_04"
 ```
 
