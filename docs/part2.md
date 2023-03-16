@@ -3,9 +3,9 @@
 
 ## Terraform Project’s Structure
 
-The project structure in terraform is quite flexible. However, we do believe that a good structure and naming rules is essential to guarantee its correct maintenance in daily operations
+The project structure in Terraform is quite flexible. However, we do believe that a good structure and naming rules is essential to guarantee its correct maintenance in Day-2 operations.
 
-Code in the Terraform language is stored in plain text files with the .tf file extension. You can keep all your code in a single main.tf file with hundreds of lines of code, or split them in several well named files and folders that make sense for your use case (this is the correct option).  Below is an example of a simple project structure:
+Code in the Terraform language is stored in plain text files with the .tf file extension. You can keep all your code in a single main.tf file with hundreds of lines of code, or split it into multiple well-named files and folders that make sense for your use case (just in case, this is the right choice). Below is an example of a simple project structure:
 
 * main.tf Declare all resource and datasource definitions
 * outputs.tf Declare all outputs in this file. Output values are similar to return values in programming languages
@@ -52,7 +52,7 @@ Add a new Equinix Metal device (baremetal server) with an implicit dependency in
 
 ```hcl
 resource "equinix_metal_device" "device" {
-  hostname         = "test-device"
+  hostname         = "tf-device"
   plan             = "c3.small.x86"
   metro            = "sv"
   operating_system = "ubuntu_20_04"
@@ -141,7 +141,7 @@ variable "plan" {
   default     = "c3.small.x86"
 }
 
-variable "location" {
+variable "metro" {
   type        = string
   description = "Equinix metro code"
   default     = "SV"
@@ -149,7 +149,7 @@ variable "location" {
 
 variable "os" {
   type        = string
-  description = "Operating system required"
+  description = "Operating system"
   default     = "ubuntu_20_04"
 }
 ```
@@ -158,9 +158,9 @@ Update `main.tf` to start using these new variables
 
 ```
 resource "equinix_metal_device" "device" {
-  hostname         = "test-device"
+  hostname         = "tf-device"
   plan             = var.plan
-  metro            = var.location
+  metro            = var.metro
   operating_system = var.os
   billing_cycle    = "hourly"
   project_id       = equinix_metal_project.project.id
@@ -174,16 +174,16 @@ Default variable values can be overridden on the command line. In fact, a defaul
 
 To set lots of variables, it is more convenient to specify their values in a variable definitions file `.tfvars`.
 
-Create a `terraform.tfvars` file
-
-Add key/value inputs for the
+Create a `terraform.tfvars` file and add key/value inputs for the variables
 
 ```
-plan     = "c3.medium.x86"
-location = "fr"
-os       = "ubuntu_22_04"
+plan  = "c3.medium.x86"
+metro = "fr"
+os    = "ubuntu_22_04"
 ```
 
+> **_Pro Tip:_** you can have multiple `.tfvars` for different environments (dev.tfvars,staging.tfvars, production.tfvars, ...) and specify which one you want to use when creating the infrastructure
+ 
 ### 6. Environment variables
 
 It is not a good practice to include your credentials directly in your template. Although there are more secure options, a good first practice is to use environment variables instead. Before using a new provider, checkout its documentation for more details on the [available authentication methods](https://registry.terraform.io/providers/equinix/equinix/latest/docs).
@@ -211,4 +211,4 @@ And the main.tf file:
 Before proceeding to the next part let's take a few minutes to discuss what we did. Here are some questions to start the discussion.
 
 * Can other providers be used in the same template/project?
-* Are all the Equinix platform resources available on terraform?
+* Are all the Equinix platform resources available on Terraform?

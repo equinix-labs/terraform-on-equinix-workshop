@@ -3,7 +3,7 @@
 
 To run this workshop you will need access to an Equinix Metal Account or create a new one following step 1 below.
 
-> **_Note:_**  You are responsible for the cost of the services used while running this workshop in your Equinix Metal account.
+> **_Note:_**  You are responsible for the cost of resources created in your Equinix Metal account while running this workshop.
 
 ## Steps
 
@@ -27,13 +27,13 @@ Then select the `API Keys` tab and click on `+ Add New Key`. Create a new key wi
 
 ### 3. Install Terraform
 
-All you need to start working with Terraform is download a binary file. However, it is also possible to use a package manager to do this for you. All the options and details are well described in [terraform downloads](https://developer.hashicorp.com/terraform/downloads).
+All you need to start working with Terraform is download a binary file. However, it is also possible to use a package manager to do this for you. All the options and details are well described in [Terraform downloads](https://developer.hashicorp.com/terraform/downloads).
 
 ### 4. (Optional) Install and Configure Metal CLI
 
 Once you are familiar with the console you may feel more comfortable managing your Equinix Metal resources with the command-line interface tool [Metal-cli](https://github.com/equinix/metal-cli).
 
-As with terraform, you only need to download a binary to start enjoying metal-cli, but you may want to check out the different [installation options](https://github.com/equinix/metal-cli/#installation).
+As with Terraform, you only need to download a binary to start enjoying Metal-cli, but you may want to check out the different [installation options](https://github.com/equinix/metal-cli/#installation).
 
 Once installed you need to configure your credentials
 
@@ -67,7 +67,7 @@ is 1.4.2. You can update by downloading from https://www.terraform.io/downloads.
 ```
 
 ```sh
-$ metal organization get
+% metal organization get
 
 +--------------------------------------+-------------------------------------+----------------------+
 |                  ID                  |                NAME                 |       CREATED        |
@@ -81,4 +81,4 @@ $ metal organization get
 Before proceeding to the next part let's take a few minutes to discuss what we did. Here are some questions to start the discussion.
 
 * Can we create API keys without manually using the portal?
-* I really don't have many resources deployed on Equinix Metal, why should I use terraform?
+* I really don't have many resources deployed on Equinix Metal, why should I use Terraform?

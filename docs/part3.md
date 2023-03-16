@@ -64,5 +64,5 @@ ssh -i ~/.ssh/equinix-metal-terraform-rsa root@$(terraform output device_public_
 
 Before proceeding to the next part let's take a few minutes to discuss what we did. Here are some questions to start the discussion.
 
-* How terraform keeps track of my infrastructure changes?
+* How Terraform keeps track of my infrastructure changes?
 * Can I scale up or replicate my device to another location without duplicating code?
