@@ -14,7 +14,7 @@ terraform init
 Expected output:
 
 ```shell
-terraform init
+$ terraform init
 
 Initializing the backend...
 
