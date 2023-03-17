@@ -44,7 +44,7 @@ provider "equinix" {
 
 ### 2. Resources
 
-Define a new metal project a set your organization ID
+Define a new metal project and set your organization ID
 
 ```hcl
 resource "equinix_metal_project" "project" {
