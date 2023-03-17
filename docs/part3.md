@@ -87,8 +87,8 @@ metal devices get
 Expected output:
 
 ```shell
-export METAL_PROJECT_ID=$(terraform output --raw project_id)
-metal devices get
+$ export METAL_PROJECT_ID=$(terraform output --raw project_id)
+$ metal devices get
 +--------------------------------------+-----------+------------------+--------+----------------------+
 |                  ID                  | HOSTNAME  |        OS        | STATE  |       CREATED        |
 +--------------------------------------+-----------+------------------+--------+----------------------+
