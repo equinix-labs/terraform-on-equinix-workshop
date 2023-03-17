@@ -42,7 +42,7 @@ Execute `metal init` and provide the requested information
 Expected output:
 
 ```shell
-metal init
+$ metal init
 
 Equinix Metal API Tokens can be obtained through the portal at https://console.equinix.com/.
 See https://metal.equinix.com/developers/docs/accounts/users/ for more details.
@@ -57,14 +57,14 @@ Writing /Users/Oscar.Cobles/.config/equinix/metal.yaml
 ### 3. Verify
 
 ```shell
-terraform version
+$ terraform version
 
 Terraform v1.4.2
 on darwin_amd64
 ```
 
 ```shell
-metal organization get
+$ metal organization get
 
 +--------------------------------------+-------------------------------------+----------------------+
 |                  ID                  |                NAME                 |       CREATED        |
