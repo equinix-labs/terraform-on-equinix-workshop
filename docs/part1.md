@@ -17,7 +17,7 @@ API keys in Metal can be tied to your user or to a single project. For this work
 
 > **_Note:_** Project API keys do not have access to the entirety of the API; some endpoints can only be used by personal API keys.
 
-To create a new user API key, access to your user Profile in the Equinix Metal console, click on your user icon, and click My Profile.
+To create a new user API key, access your user Profile in the Equinix Metal console, click on your user icon, and click My Profile.
 
 ![Equinix Console profile section screenshot](images/profile-screenshot.png)
 
@@ -27,7 +27,7 @@ Then select the `API Keys` tab and click on `+ Add New Key`. Create a new key wi
 
 ### 3. Install Terraform
 
-All you need to start working with Terraform is download a binary file. However, it is also possible to use a package manager to do this for you. All the options and details are well described in [Terraform downloads](https://developer.hashicorp.com/terraform/downloads).
+All you need to start working with Terraform is to download a binary file. However, it is also possible to use a package manager to do this for you. All the options and details are well described in [Terraform downloads](https://developer.hashicorp.com/terraform/downloads).
 
 ### 4. (Optional) Install and Configure Metal CLI
 
@@ -41,8 +41,8 @@ Execute `metal init` and provide the requested information
 
 Expected output:
 
-```sh
-% metal init
+```shell
+metal init
 
 Equinix Metal API Tokens can be obtained through the portal at https://console.equinix.com/.
 See https://metal.equinix.com/developers/docs/accounts/users/ for more details.
@@ -56,18 +56,15 @@ Writing /Users/Oscar.Cobles/.config/equinix/metal.yaml
 
 ### 3. Verify
 
-```sh
-% terraform version
+```shell
+terraform version
 
-Terraform v1.3.6
+Terraform v1.4.2
 on darwin_amd64
-
-Your version of Terraform is out of date! The latest version
-is 1.4.2. You can update by downloading from https://www.terraform.io/downloads.html
 ```
 
-```sh
-% metal organization get
+```shell
+metal organization get
 
 +--------------------------------------+-------------------------------------+----------------------+
 |                  ID                  |                NAME                 |       CREATED        |

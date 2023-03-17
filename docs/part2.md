@@ -61,12 +61,12 @@ resource "equinix_metal_device" "device" {
 }
 ```
 
-Add a new Equinix Metal project SSH key 
+Add a new Equinix Metal project SSH key. Insert the code below and keep the ssh_key as is, we will update it later in this workshop
 
 ```hcl
 resource "equinix_metal_project_ssh_key" "public_key" {
   name       = "terraform-rsa"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAAD..."
+  public_key = "YourRsaSshKeyContent"
   project_id = equinix_metal_project.project.id
 }
 ```
@@ -101,14 +101,14 @@ resource "equinix_metal_project_ssh_key" "public_key" {
 }
 ```
 
-> **_Pro Tip:_** you can use "depends_on" meta-argument to declare explicit dependencies between resources
+> **_Pro Tip:_** you can use `depends_on` meta-argument to declare explicit dependencies between resources
  
 If you create a new device in a project, all the keys of the project's collaborators will be injected to the device. Add `depends_on` in the device resource to make sure the key is created before the device
 
 ```hcl
 resource "equinix_metal_device" "device" {
   ...
-  depends_on = ["equinix_metal_project_ssh_key.public_key"]
+  depends_on = [ equinix_metal_project_ssh_key.public_key ]
 }
 ```
 
@@ -156,7 +156,7 @@ variable "os" {
 
 Update `main.tf` to start using these new variables
 
-```
+```hcl
 resource "equinix_metal_device" "device" {
   hostname         = "tf-device"
   plan             = var.plan
@@ -182,19 +182,48 @@ metro = "fr"
 os    = "ubuntu_22_04"
 ```
 
-> **_Pro Tip:_** you can have multiple `.tfvars` for different environments (dev.tfvars,staging.tfvars, production.tfvars, ...) and specify which one you want to use when creating the infrastructure
+> **_Pro Tip:_** you can have multiple `.tfvars` to reuse your code in different projects/locations/environments, such as `dev.tfvars`, `staging.tfvars`, `web_frontend.tfvars`, `web_backend.tfvars`, etc. You will be able to specify which one you want to use when creating the infrastructure
  
 ### 6. Environment variables
 
 It is not a good practice to include your credentials directly in your template. Although there are more secure options, a good first practice is to use environment variables instead. Before using a new provider, checkout its documentation for more details on the [available authentication methods](https://registry.terraform.io/providers/equinix/equinix/latest/docs).
 
-```sh
+To configure Equinix Metal credentials, you will need to add the `METAL_AUTH_TOKEN` variable. 
+
+```shell
 export METAL_AUTH_TOKEN=someEquinixMetalToken
-# export EQUINIX_API_CLIENTID=someEquinixAPIClientID
-# export EQUINIX_API_CLIENTSECRET=someEquinixAPIClientSecret
 ```
 
-Remove `auth_token = "someEquinixMetalAPIToken"` line from `versions.tf` file
+> **_Pro Tip:_** You can use metal-cli to add the required credentials without printing them on your screen
+>
+>In Bash:
+>
+>```bash
+>eval $(metal env)
+>```
+>
+>Use `--help` for other shells examples:
+>
+>```shell
+>metal env --help
+>```
+
+Now, you can delete the `auth_token = "someEquinixMetalAPIToken"` line we kept in `main.tf` file
+
+Just one last Tip, any variable you set on your .tf templates (`plan`, `metro` and `os` in this workshop)
+can be set as a environment variable in the format `TF_VAR_name` and this will be checked last for a value. For example:
+
+```bash
+export TF_VAR_plan=`c3.medium.x86`
+export TF_VAR_metro=`fr`
+export TF_VAR_os=`ubuntu_22_04`
+```
+
+Check out metal-cli for some useful variables you can take advantage of in your projects
+
+```sh
+metal env --output terraform
+```
 
 ### 7. Verify
 

@@ -7,8 +7,8 @@
 
 The `terraform init` command initializes a working directory containing Terraform configuration files.
 
-```sh
-% terraform init
+```shell
+terraform init
 ```
 
 Expected output:
@@ -19,8 +19,8 @@ Expected output:
 
 The `terraform plan` command creates an execution plan, which lets you preview the changes that Terraform plans to make to your infrastructure.
 
-```sh
-% terraform plan
+```shell
+terraform plan
 ```
 
 Expected output:
@@ -31,8 +31,8 @@ Expected output:
 
 The `terraform apply` command executes the actions proposed in a Terraform plan.
 
-```sh
-% terraform apply
+```shell
+terraform apply
 ```
 
 Enter yes when prompted for input
@@ -45,8 +45,9 @@ Expected output:
 
 Take the `project_id` from the terraform apply and use metal cli to check the status of the new server
 
-```
-metal devices get --project-id $(terraform output project_id)
+```shell
+METAL_PROJECT_ID=$(terraform output project_id)
+metal devices get
 ```
 
 Expected output:
@@ -56,7 +57,7 @@ Expected output:
 
 SSH login into the server
 
-```
+```shell
 ssh -i ~/.ssh/equinix-metal-terraform-rsa root@$(terraform output device_public_ip)
 ```
 
@@ -64,5 +65,5 @@ ssh -i ~/.ssh/equinix-metal-terraform-rsa root@$(terraform output device_public_
 
 Before proceeding to the next part let's take a few minutes to discuss what we did. Here are some questions to start the discussion.
 
-* How Terraform keeps track of my infrastructure changes?
+* How does Terraform keep track of my infrastructure changes?
 * Can I scale up or replicate my device to another location without duplicating code?
