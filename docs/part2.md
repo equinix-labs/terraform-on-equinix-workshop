@@ -3,7 +3,7 @@
 
 ## Terraform Project’s Structure
 
-The project structure in Terraform is quite flexible. However, we do believe that a good structure and naming rules is essential to guarantee its correct maintenance in Day-2 operations.
+The project/module structure in Terraform is quite flexible. However, we do believe that a good structure and naming rules is essential to guarantee its correct maintenance in Day-2 operations.
 
 Code in the Terraform language is stored in plain text files with the .tf file extension. You can keep all your code in a single main.tf file with hundreds of lines of code, or split it into multiple well-named files and folders that make sense for your use case (just in case, this is the right choice). Below is an example of a simple project structure:
 
@@ -15,6 +15,10 @@ Code in the Terraform language is stored in plain text files with the .tf file e
 ## Steps
 
 ### 1. Provider
+
+Each Terraform module must declare which providers it requires, so that Terraform can install and use them. Provider requirements are declared in a required_providers block. You can also specify a version constraint for compability restrictions.
+
+Some providers requires some settings (credentials, a default project or region, ...) before Terraform can use them.
 
 Create a `main.tf` file to configure the provider. Insert the code below and keep the `auth_token` as is, we will update it later in this workshop
 
@@ -40,11 +44,12 @@ provider "equinix" {
 
 ### 2. Resources
 
-Define a new metal project
+Define a new metal project a set your organization ID
 
 ```hcl
 resource "equinix_metal_project" "project" {
   name = "Terraform Workshop"
+  organization_id = "someEquinixMetalOrgId"
 }
 ```
 
@@ -66,12 +71,12 @@ Add a new Equinix Metal project SSH key. Insert the code below and keep the ssh_
 ```hcl
 resource "equinix_metal_project_ssh_key" "public_key" {
   name       = "terraform-rsa"
-  public_key = "YourRsaSshKeyContent"
+  public_key = "someRsaSshKeyContent"
   project_id = equinix_metal_project.project.id
 }
 ```
 
-Use terraform `TLS` provider to create a PEM (and OpenSSH) formatted private key.
+Use terraform `TLS` provider to create an OpenSSH formatted private key
 
 ```hcl
 resource "tls_private_key" "ssh_key_pair" {
@@ -229,11 +234,20 @@ metal env --output terraform
 
 At this point, your project should look like this:
 
-<!-- [[ADD IMAGE OF THE PROJECT TREE ]] -->
+```shell
+tree
+.
+├── main.tf
+├── outputs.tf
+├── terraform.tfvars
+└── variables.tf
+
+1 directory, 4 files
+```
 
 And the main.tf file:
 
-<!-- [[ADD IMAGE OF THE MAIN FILE ]] -->
+![Terraform main file](images/terraform-main-file.png)
 
 ## Discussion
 
