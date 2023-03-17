@@ -1,7 +1,7 @@
-site_name: "Workshop: Equinix Labs"
+site_name: "Workshop: Terraform on Equinix"
 
-repo_url: https://github.com/equinix-labs/equinix-labs-workshop
-repo_name: equinix-labs/equinix-labs-workshop
+repo_url: https://github.com/equinix-labs/terraform-on-equinix-workshop
+repo_name: equinix-labs/terraform-on-equinix-workshop
 edit_uri: blob/main/docs
 
 extra_css:

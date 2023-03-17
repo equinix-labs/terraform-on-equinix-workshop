@@ -3,13 +3,14 @@
 
 Thank you for participating in the workshop! Let's recap some of the key takeways that we've learned:
 
-* ...
-* ...
-* ...
-
-## References
+* How to structure a terraform project for successful Day-2 operations
+* Deploy an Equinix Metal device with terraform
+* Using tfvars to keep secrets out of the configuration and make the configuration reusable
 
 ## Next Steps
+
+* Convert this project to a reusable [Terraform Module](https://github.com/equinix-labs/equinix-labs/blob/main/terraform-module-standards.md).
+* Learn how to use Terraform to manage Equinix Fabric and Network Edge resources by trying out the [available examples](https://github.com/equinix/terraform-provider-equinix/tree/master/examples).
 
 ## Resources
 
