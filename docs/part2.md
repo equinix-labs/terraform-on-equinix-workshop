@@ -219,9 +219,9 @@ Just one last Tip, any variable you set on your .tf templates (`plan`, `metro` a
 can be set as a environment variable in the format `TF_VAR_name` and this will be checked last for a value. For example:
 
 ```bash
-export TF_VAR_plan=`c3.medium.x86`
-export TF_VAR_metro=`fr`
-export TF_VAR_os=`ubuntu_22_04`
+export TF_VAR_plan="c3.medium.x86"
+export TF_VAR_metro="fr"
+export TF_VAR_os="ubuntu_22_04"
 ```
 
 Check out metal-cli for some useful variables you can take advantage of in your projects
