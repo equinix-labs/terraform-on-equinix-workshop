@@ -7,6 +7,16 @@ edit_uri: blob/main/docs
 extra_css:
   - stylesheets/extra.css
 
+nav:
+  - Introduction: index.md
+
+  - Parts:
+      - 1. Account Setup and Terraform Install: parts/install.md
+      - 2. Create a Terraform project: parts/create-project.md
+      - 3. Apply a Terraform Plan: parts/apply-plan.md
+
+  - Conclusion: parts/conclusion.md
+
 theme:
   name: material
 
@@ -34,6 +44,7 @@ theme:
     - search.highlight
     - navigation.footer
     - content.code.copy
+    - navigation.expand
 
 extra:
   social:

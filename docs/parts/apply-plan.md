@@ -1,11 +1,10 @@
-<!-- See https://squidfunk.github.io/mkdocs-material/reference/ -->
-# Part 3: Application
+# Part 3: Apply a Terraform Plan
 
 ## Steps
 
-### 1. Terraform init
+### 1. Initialize your Terraform project
 
-The `terraform init` command initializes a working directory containing Terraform configuration files.
+Running the `terraform init` command initializes a working directory containing Terraform configuration files.
 
 ```shell
 terraform init
@@ -49,7 +48,7 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-### 1. Terraform plan
+### 1. Create a Terraform plan
 
 The `terraform plan` command creates an execution plan, which lets you preview the changes that Terraform plans to make to your infrastructure.
 
@@ -59,7 +58,7 @@ terraform plan
 
 Expected output:
 
-![Terraform plan output](images/terraform-plan-output.png)
+![Terraform plan output](../images/terraform-plan-output.png)
 
 ### 2. Terraform apply
 
@@ -69,15 +68,15 @@ The `terraform apply` command executes the actions proposed in a Terraform plan.
 terraform apply
 ```
 
-Enter yes when prompted for input
+Enter `yes` when prompted for input.
 
 Expected output:
 
-![Terraform apply output](images/terraform-apply-output.png)
+![Terraform apply output](../images/terraform-apply-output.png)
 
-### 3. Verify
+### 3. Verify the server was provisioned
 
-Take the `project_id` from the terraform apply and use metal cli to check the status of the new server
+Take the `project_id` from the terraform apply and use `metal` CLI to check the status of the new server
 
 ```shell
 export METAL_PROJECT_ID=$(terraform output --raw project_id)
@@ -96,8 +95,9 @@ $ metal devices get
 +--------------------------------------+-----------+------------------+--------+----------------------+
 ```
 
+### 4. SSH into the server
 
-SSH login into the server
+Now you can SSH login into the server:
 
 ```shell
 ssh -i ~/.ssh/equinix-metal-terraform-rsa root@$(terraform output device_public_ip)

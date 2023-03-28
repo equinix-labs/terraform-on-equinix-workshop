@@ -1,4 +1,3 @@
-<!-- See https://squidfunk.github.io/mkdocs-material/reference/ -->
 # Conclusion
 
 Thank you for participating in the workshop! Let's recap some of the key takeways that we've learned:

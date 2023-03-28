@@ -1,5 +1,4 @@
-<!-- See https://squidfunk.github.io/mkdocs-material/reference/ -->
-# Part 1: Setup
+# Part 1: Account Setup and Terraform Install
 
 To run this workshop you will need access to an Equinix Metal Account or create a new one following step 1 below.
 
@@ -11,23 +10,27 @@ To run this workshop you will need access to an Equinix Metal Account or create 
 
 If you have never used Equinix Metal before, don't worry, you just need 2 minutes to [sign-up and create your first organization](https://console.equinix.com/sign-up). If you have any doubt you can watch our [Getting Started with Equinix Metal](https://www.youtube.com/watch?v=5Ax6fKBeg2U&t=153s) video.
 
-### 2. Create an user API key (token)
+### 2. Create an API key
 
-API keys in Metal can be tied to your user or to a single project. For this workshop we will need a  user-level API key.
+API keys in Metal can be tied to your user or to a single project. For this workshop we will need a user-level API key.
 
 > **_Note:_** Project API keys do not have access to the entirety of the API; some endpoints can only be used by personal API keys.
 
-To create a new user API key, access your user Profile in the Equinix Metal console, click on your user icon, and click My Profile.
+To create a new user API key, access your user Profile in the Equinix Metal console, click on the **User Icon**, and click **My Profile**.
 
-![Equinix Console profile section screenshot](images/profile-screenshot.png)
+![Equinix Console profile section screenshot](../images/profile-screenshot.png)
 
-Then select the `API Keys` tab and click on `+ Add New Key`. Create a new key with `Read/Write` permissions.
+* Select the `API Keys` tab.
+* Click on `+ Add New Key`.
+* Create a new key with `Read/Write` permissions.
 
-![Equinix Console API keys section screenshot](images/profile-api-keys-screenshot.png)
+![Equinix Console API keys section screenshot](../images/profile-api-keys-screenshot.png)
 
 ### 3. Install Terraform
 
-All you need to start working with Terraform is to download a binary file. However, it is also possible to use a package manager to do this for you. All the options and details are well described in [Terraform downloads](https://developer.hashicorp.com/terraform/downloads).
+All you need to start working with Terraform is to download a binary file. However, it is also possible to use a package manager for your given operating system.
+
+We will not describe how to install Terraform, instead refer to the [Terraform documentation](https://developer.hashicorp.com/terraform/downloads).
 
 ### 4. (Optional) Install and Configure Metal CLI
 
@@ -35,9 +38,7 @@ Once you are familiar with the console you may feel more comfortable managing yo
 
 As with Terraform, you only need to download a binary to start enjoying Metal-cli, but you may want to check out the different [installation options](https://github.com/equinix/metal-cli/#installation).
 
-Once installed you need to configure your credentials
-
-Execute `metal init` and provide the requested information 
+Once installed you need to configure your credentials. To do this, execute `metal init` and provide the requested information.
 
 Expected output:
 
